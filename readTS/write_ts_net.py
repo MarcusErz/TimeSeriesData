@@ -11,9 +11,14 @@ def networks_to_file(sparsifyed_networks, source_filename):
         target_path = os.path.join(taget_data_path, target_file_name)
         f = open(target_path, "w")
         indexes = np.where(sparsifyed_networks[i] != 0)
+        # print(indexes[0])
+        joined_array = np.vstack((indexes[0], indexes[1])).T
+        print('con: {}'.format(joined_array))
+        sorted_array = joined_array[joined_array[:, 0].argsort()[::-1]]
+        print('sorted: {}'.format(sorted_array))
         assert len(indexes[0] == len(indexes[1]))
-        for y in range(len(indexes[0])):
-            f.write(str(indexes[0][y]) + " " + str(indexes[1][y]) + "\n")
+        for y in range(len(sorted_array)):
+            f.write(str(sorted_array[y][0]) + " " + str(sorted_array[y][1]) + "\n")
         f.close()
 
 
