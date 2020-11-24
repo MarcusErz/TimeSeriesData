@@ -15,3 +15,13 @@ def networks_to_file(sparsifyed_networks, source_filename):
         for y in range(len(indexes[0])):
             f.write(str(indexes[0][y]) + " " + str(indexes[1][y]) + "\n")
         f.close()
+
+
+def delete_files():
+    folders_in_directory = os.listdir(TARGET_DIR)
+    for folder in folders_in_directory:
+        folder_path = os.path.join(TARGET_DIR, folder)
+        files_in_subdirectory = os.listdir(folder_path)
+        for file in files_in_subdirectory:
+            path_to_file = os.path.join(folder_path, file)
+            os.remove(path_to_file)

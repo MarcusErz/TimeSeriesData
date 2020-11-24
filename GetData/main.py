@@ -13,3 +13,4 @@ networks = dfts.data_from_ts(ts_values, 100)
 sparsifyed_networks = dfts.reduce_networks(networks)
 
 wt.networks_to_file(sparsifyed_networks, source_filename)
+# wt.delete_files()
